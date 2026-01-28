@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Per Chiara</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: pink;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  padding: 40px;
+  position: relative;
+}
+
+.slide.active {
+  display: flex;
+}
+
+button.next {
+  margin-top: 40px;
+  background: white;
+  color: hotpink;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.background-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: url('https://i.imgur.com/QZ7QZ8y.png');
+  background-size: 150px;
+}
+
+.choice-buttons {
+  margin-top: 30px;
+}
+
+.choice-buttons button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yesBtn {
+  background: white;
+  color: hotpink;
+}
+
+#noBtn {
+  background: #ff6fae;
+  color: white;
+  position: absolute;
+}
+</style>
+</head>
+<body>
+
+<div class="slide active"><div class="background-icons"></div>Sei l'amore della mia vita<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>Sei la persona di cui non posso fare a meno<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>Ogni momento con te lo vorrei rivivere trecento mila volte<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>E nonostante questi giorni siano stati difficili e abbia sbagliato<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>Vorrei chiederti una cosa a cui terrei tanto<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>Mi piacerebbe da morire portarti venerdì sera all'Old Wild West (rigorosamente offerto)<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>Ci sarà anche una bella sorpresa<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>E in più, se te la sentissi, mi piacerebbe sempre venerdì, o domenica, di andare ai trampolini<button class="next">➡️</button></div>
+<div class="slide"><div class="background-icons"></div>Quindi che dici, ti andrebbe di rendermi ancora di più l'orso torpo più felice del mondo?<button class="next">➡️</button></div>
+
+<div class="slide">
+  <div class="background-icons"></div>
+  Vuoi uscire con me?
+  <div class="choice-buttons">
+    <button id="yesBtn" onclick="alert('Grazie mia dea')">SÌ</button>
+    <button id="noBtn">NO</button>
+  </div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let index = 0;
+
+document.querySelectorAll('.next').forEach(btn => {
+  btn.addEventListener('click', () => {
+    slides[index].classList.remove('active');
+    index++;
+    slides[index].classList.add('active');
+  });
+});
+
+const noBtn = document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover', moveNo);
+noBtn.addEventListener('click', moveNo);
+
+function moveNo() {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+}
+</script>
+
+</body>
+</html>
